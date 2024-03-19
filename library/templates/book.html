@@ -1,0 +1,39 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block 'content' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ book.name }}</title>
+    <style>
+
+        .card {
+            width: 450px;
+            margin: 0 auto; 
+            background-color: rgba(57, 4, 4, 0.123) !important;
+            color: rgba(57, 4, 4, 0.503);
+            font-weight: 500;
+            
+        }
+        .card-img-top {
+            width: 100%;
+            height: 550px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <div class="card">
+            <img src="{{ book.image_url }}" class="card-img-top" alt="{{ book.name }}">
+            <div class="card-body">
+                <h4 class="card-title">{{ book.name }}</h4>
+                <p class="card-text">Price: {{ book.price }} $</p>
+                <!-- <p class="card-text">Author: {{ book.author }}</p> -->
+                <p> <a href="{{book.author.show_url}}">Author: {{ book.author.name }}</a></p>
+                <p class="card-text">Number of Pages: {{ book.no_ofpages }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %} 

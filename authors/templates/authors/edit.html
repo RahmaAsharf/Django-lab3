@@ -1,0 +1,13 @@
+{% extends 'layouts/base.html'%}
+{% load static %}
+{% block 'content' %}
+<h4> Add New Author </h4>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" class="btn btn-success">
+    <script src="{% static 'library/js/script.js'%}">
+    </script>
+</form>
+
+{% endblock %}

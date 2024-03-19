@@ -1,0 +1,33 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block 'content' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <style>
+        .center-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        h3{
+            text-align: center;
+            margin-top: 15px;
+            color: rgba(57, 4, 4, 0.503);
+            font-weight: 500;
+        }
+
+    </style>
+</head>
+<body>
+    <h3>Welcome To Rahma's Library</h3>
+    <div class="center-image">
+        <img src="{% static 'library/images/homepic.jpg'%}" width="650" height="800" alt="Library Image">
+    </div>
+</body>
+</html>
+{% endblock %} 
+

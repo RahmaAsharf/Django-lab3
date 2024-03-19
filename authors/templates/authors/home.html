@@ -1,0 +1,25 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block 'content' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <style>
+            .center-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="center-image">
+        <img src="{% static 'authors/images/homepic.jpg' %}" width="700" height="860    " alt="Authors Image">
+    </div>
+</body>
+</html>
+{% endblock %} 
+

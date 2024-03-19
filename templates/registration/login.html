@@ -1,0 +1,19 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block 'content' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <style>
+    </style>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+      {{form}}
+        <input type="submit" >
+        </form>
+    <script src="{% static 'library/js/script.js'%}"> </script>
+</body>
+{% endblock %} 

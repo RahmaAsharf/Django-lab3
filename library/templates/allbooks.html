@@ -1,0 +1,85 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block 'content' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Books List</title>
+    <style>
+        .card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(242, 235, 226, 0.712);
+            margin: 10px;
+            width: 200px;
+            height: 650px;
+        }
+
+        .card .card-body {
+            padding-bottom: 80px; 
+        }
+
+        .card .btn.show,
+        .card .btn.delete,
+        .card .btn.update {
+            position: absolute;
+            bottom: 10px;
+            width: 80%; /* Adjust the width as needed */
+            background-color: rgba(57, 4, 4, 0.333);
+            border-color: rgba(242, 235, 226, 0.712);
+            color: rgba(242, 235, 226, 0.712);
+            font-weight: 1000;
+            text-align: center; /* Center the text */
+
+        }
+
+        .card .btn.show {
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 30px;
+        }
+
+        .card .btn.delete {
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 40px; /* Adjust this value to create space between buttons */
+            margin-bottom: 15px;
+        }
+
+        .card .btn.update {
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 70px; /* Adjust this value to create space between buttons */
+            margin-bottom: 30px;
+        }
+
+        .card .btn:hover{
+            background-color: rgba(43, 25, 1, 0.631);
+            color: beige;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="d-flex flex-wrap justify-content-center">
+        {% for book in books %}
+        <div class="card" style="width: 18rem;">
+            <img src="{{ book.image_url }}" alt="{{ book.name }}" width="286" height="400" class="card-img-top" alt="book">
+            <div class="card-body">
+              <h4 class="card-title">{{book.name}}</h4>
+              <h5 class="card-title">{{book.price}} $</h5>
+              <a class="btn btn-info show" href="{% url 'profile' book.id %}">Show</a>
+              <a class="btn btn-info delete" href="{% url 'delete' book.id %}">Delete</a>
+              <a class="btn btn-info update" href="{% url 'update' book.id %}">Update</a>
+            </div>
+          </div>
+        {% endfor %}
+    </div>
+
+    
+   
+    {% endblock %}
+</body>
+</html>

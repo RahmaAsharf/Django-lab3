@@ -1,0 +1,83 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block 'content' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit book</title>
+    <style>
+        h3 ,h5{
+            text-align: center;
+            margin-top: 30px;
+            color: rgba(57, 4, 4, 0.8);
+        }
+        #form {
+            
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%; 
+            margin: 20px auto; 
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            margin-bottom: 15px;
+        }
+
+        button[type="submit"] {
+            background-color: rgba(57, 4, 4, 0.333);
+            color: rgba(242, 235, 226, 0.712);
+            border-color: rgba(242, 235, 226, 0.712);
+            font-weight: bold;
+        }
+
+        button[type="submit"]:hover {
+            background-color: rgba(43, 25, 1, 0.631);
+            color: beige;
+        }
+    </style>
+</head>
+<body>
+    <h3>Edit Book Form</h3>
+    <form method="post" enctype="multipart/form-data" id="form">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="name" class="form-label">Book Name</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ book.name }}" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Book Price</label>
+            <input type="number" class="form-control" id="price" name="price" value="{{ book.price }}" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="author" class="form-label">Author</label>
+            <select class="form-control" id="author" name="author">
+                {% for author in authors %}
+                    <option value="{{ author.id }}" {% if book.author.id == author.id %} selected {% endif %}>{{ author.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="pages" class="form-label">No. of pages</label>
+            <input type="number" class="form-control" id="pages" name="no_ofpages" value="{{ book.no_ofpages }}" aria-describedby="emailHelp">
+        </div>
+        <div class="existing-image">
+            {% if book.image %}
+                <h5>Existing Image: {{ book.image.name }}</h5>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            <label for="image" class="form-label">Book's Image</label>
+            <input type="file" class="form-control" id="image" name="image" aria-describedby="emailHelp">
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
+{% endblock %} 

@@ -1,0 +1,74 @@
+{% extends 'layouts/base.html'%}
+{% load static %}
+{% block 'content' %}
+<style>
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba(242, 235, 226, 0.712);
+        margin: 10px;
+        width: 200px;
+        height: 450px;
+    }
+
+    .card .card-body {
+        padding-bottom: 80px; 
+    }
+
+    .card .btn.show,
+    .card .btn.delete,
+    .card .btn.update {
+        position: absolute;
+        bottom: 10px;
+        width: 80%; 
+        background-color: rgba(57, 4, 4, 0.333);
+        border-color: rgba(242, 235, 226, 0.712);
+        color: rgba(242, 235, 226, 0.712);
+        font-weight: 1000;
+        text-align: center;
+
+    }
+
+    .card .btn.show {
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 30px;
+    }
+
+    .card .btn.delete {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 40px; 
+        margin-bottom: 15px;
+    }
+
+    .card .btn.update {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 70px; 
+        margin-bottom: 30px;
+    }
+
+    .card .btn:hover{
+        background-color: rgba(43, 25, 1, 0.631);
+        color: beige;
+    }
+</style>
+
+<div class="d-flex flex-wrap justify-content-center">
+    {% for author in authors %}
+        <div class="card" style="width: 18rem;">
+            <img src="{{ author.image_url }}" alt="{{ author.name }}" width="200" height="200" class="card-img-top" alt="author">
+            <div class="card-body">
+                <h4 class="card-title">{{ author.name }}</h4>
+                <h5 class="card-title">{{ author.birth_date }}</h5>
+                <a class="btn btn-info show" href="{{ author.show_url }}">Show</a>
+                <a class="btn btn-info update" href="{{ author.edit_url }}">Edit</a>
+                <a class="btn btn-info delete" href="{{ author.del_url }}">Delete</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
